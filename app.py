@@ -9,28 +9,26 @@ app = Flask(__name__)
 app.debug = True 
 app.config['SECRET_KEY'] = 'hard to guess string'
 
-# WTF FORMS
-# Form - takes in data, submits
+# WTF form class
 class MovieForm(FlaskForm):
     movie = StringField('What is your favorite movie?', validators=[Required()])
     submit = SubmitField('Submit')
 
-# ROUTE 1 - sets cookie - do we have to call and display cookie?
+# ROUTE 1 - sets cookie
 @app.route('/')
 def set_cookie():
-	# Insert itunes logo image
 	response = make_response('<h1>What is the best kind of cookie?</h1>')
 	response.set_cookie('type', 'chocolate chip')
 
 	return render_template('home.html', response=response)
 
-# ROUTE 2 - call on form
+# ROUTE 2 - render template to display form
 @app.route('/index')
 def index():
     firstForm = MovieForm()
     return render_template('form.html', form=firstForm)
 
-# ROUTE 3 - display form response
+# ROUTE 3 - get api data based on form response, render template to display data
 @app.route('/result', methods = ['GET', 'POST'])
 def result():
     form = MovieForm(request.form)
