@@ -2,6 +2,7 @@
 
 <h1>About {{ results['name'] }}...</h1>
 
+<!--To test conditional for low ratings, search the movie "Saving Christmas" (this has a rating < 5 so it will make you enter another movie)-->
 {% if rating_num < 5 %}
 	Sorry, but your movie has too low of a rating.
 	Please <a href="http://localhost:5000/index">go back</a> and enter a better movie!
@@ -18,6 +19,5 @@
 	{% endfor %}
 
 	<a href = "http://www.google.com/search?q={{ results['name'] }}">Learn more!</a>
-
 
 {% endif %}
