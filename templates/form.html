@@ -1,0 +1,11 @@
+{% block content %}
+  <h1>Movie Information</h1>
+  <form method="POST" action="http://localhost:5000/result">
+      {{ form.hidden_tag() }}
+      {% for message in get_flashed_messages() %}
+      {{ message }}
+      {% endfor %}
+      <p>{{ form.movie.label }}{{ form.movie() }}</p>
+      {{ form.submit() }}
+  </form>
+{% endblock %}

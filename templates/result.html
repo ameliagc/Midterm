@@ -1,0 +1,23 @@
+<img src="static/moviereel.jpeg">
+
+<h1>About {{ results['name'] }}...</h1>
+
+{% if rating_num < 5 %}
+	Sorry, but your movie has too low of a rating.
+	Please <a href="http://localhost:5000/index">go back</a> and enter a better movie!
+{% else %}
+
+	Here is the following information we have:<br><br>
+	{% for item in results %}
+		{% if item == "poster_url" %}
+			<a href = "{{ poster_url }}">Click here to see the poster</a>
+			<br><br>
+		{% else %}
+			{{ item }}: {{ results[item] }} <br><br>
+		{% endif %}
+	{% endfor %}
+
+	<a href = "http://www.google.com/search?q={{ results['name'] }}">Learn more!</a>
+
+
+{% endif %}
