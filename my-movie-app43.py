@@ -18,6 +18,9 @@ app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DATABASE_URL') or "postg
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+# Set up Flask debug stuff
+manager = Manager(app)
+
 ## Set up Shell context so it's easy to use the shell to debug
 # Define function
 def make_shell_context():
