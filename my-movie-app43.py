@@ -1,8 +1,13 @@
-from flask import Flask, request, render_template, redirect, url_for, flash, make_response
-import json
+import os
+from flask import Flask, render_template, session, redirect, url_for, flash
+from flask_script import Manager, Shell
+# from flask_moment import Moment # requires pip/pip3 install flask_moment
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, SubmitField
+from wtforms import StringField, SubmitField, FileField
 from wtforms.validators import Required
+from flask_sqlalchemy import SQLAlchemy
+import random
+from flask_migrate import Migrate, MigrateCommand # needs: pip/pip3 install flask-migrate
 
 app = Flask(__name__)
 app.debug = True 
