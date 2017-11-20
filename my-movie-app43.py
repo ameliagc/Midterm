@@ -1,5 +1,4 @@
 from flask import Flask, request, render_template, redirect, url_for, flash, make_response
-import requests
 import json
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, SubmitField
