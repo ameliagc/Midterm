@@ -1,1 +1,1 @@
-web: gunicorn main_app:app
+web: gunicorn my-movie-app43:app
