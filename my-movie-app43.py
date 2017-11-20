@@ -9,6 +9,18 @@ app = Flask(__name__)
 app.debug = True 
 app.config['SECRET_KEY'] = 'hard to guess string'
 
+# add for heroku database
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DATABASE_URL') or "postgresql://localhost/movie_data"
+app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+## Set up Shell context so it's easy to use the shell to debug
+# Define function
+def make_shell_context():
+    return dict( app=app, db=db, Song=Song, Artist=Artist, Album=Album)
+# Add function use to manager
+manager.add_command("shell", Shell(make_context=make_shell_context))
+
 # WTF form class
 class MovieForm(FlaskForm):
     movie = StringField('What is your favorite movie?', validators=[Required()])
